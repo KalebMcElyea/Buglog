@@ -2,7 +2,7 @@
   <div class="bugComponent">
     <div class="card">
       <div class="card-top bg-info">
-        <router-link :to="`/bug/${bugProp.id}`">
+        <router-link :to="`/BugDetailsPage/${bugProp.id}`">
           <h3>
             {{ bugProp.title }}
           </h3>
