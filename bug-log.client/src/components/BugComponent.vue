@@ -2,7 +2,11 @@
   <div class="bugComponent">
     <div class="card">
       <div class="card-top bg-info">
-        {{ bugProp.title }}
+        <router-link :to="`/bug/${bugProp.id}`">
+          <h3>
+            {{ bugProp.title }}
+          </h3>
+        </router-link>
       </div>
       <div class="card-body">
         {{ bugProp.description }}
@@ -15,6 +19,8 @@
 </template>
 
 <script>
+import { bugsService } from '../services/BugsService'
+import { logger } from '../utils/Logger'
 export default {
   name: 'BugComponent',
 
@@ -22,8 +28,16 @@ export default {
     bugProp: { type: Object, required: true }
   },
 
-  setup() {
-    return {}
+  setup(props) {
+    return {
+      async getOne() {
+        try {
+          await bugsService.getBugsById(props.bugProp.id)
+        } catch (error) {
+          logger.log(error)
+        }
+      }
+    }
   },
   components: {}
 }
