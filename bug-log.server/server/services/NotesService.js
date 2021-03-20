@@ -1,9 +1,16 @@
 import { dbContext } from '../db/DbContext'
 import { BadRequest } from '../utils/Errors'
 
+// async findNotesByBugId(id) {
+//   const note = await dbContext.Note.findById(id).populate('creator')
+//   if (note) {
+//     throw new BadRequest('Invalid Id')
+//   }
+//   return note
+// }
 class NotesService {
-  findNotesByBugId(id) {
-    throw new Error('Method not implemented.')
+  async findNotesByBugId(query) {
+    return await dbContext.Note.find(query)
   }
 
   async find(query = {}) {

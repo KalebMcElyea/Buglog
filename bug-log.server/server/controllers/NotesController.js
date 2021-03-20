@@ -15,17 +15,17 @@ export class NotesController extends BaseController {
       .put('/:id', this.edit)
   }
 
-  async getNotesById(req, res, next) {
+  async getAll(req, res, next) {
     try {
-      return res.send(await notesService.findById(req.params.id))
+      return res.send(await notesService.find())
     } catch (error) {
       next(error)
     }
   }
 
-  async getAll(req, res, next) {
+  async getNotesById(req, res, next) {
     try {
-      return res.send(await notesService.find())
+      return res.send(await notesService.findById(req.params.id))
     } catch (error) {
       next(error)
     }

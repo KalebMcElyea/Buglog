@@ -34,14 +34,6 @@ class BugsService {
     }
     return bug
   }
-
-  async findNotesByBugId(id) {
-    const note = await dbContext.Note.findById(id).populate('creator')
-    if (note) {
-      throw new BadRequest('Invalid Id')
-    }
-    return note
-  }
 }
 
 export const bugsService = new BugsService()
