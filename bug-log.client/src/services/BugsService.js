@@ -31,13 +31,9 @@ class BugsService {
   }
 
   async createBug(body) {
-    try {
-      const res = await api.post('api/bugs', body)
-      AppState.bug.push(res.data)
-      return res.data.id
-    } catch (error) {
-      console.error(error)
-    }
+    const res = await api.post('api/bugs', body)
+    AppState.bugs.push(res.data)
+    return res.data.id
   }
 
   // WANT TO TURN THIS INTO A CLOSED INSTEAD OF DELETE

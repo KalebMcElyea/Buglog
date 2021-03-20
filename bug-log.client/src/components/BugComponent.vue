@@ -1,5 +1,5 @@
 <template>
-  <div class="bugComponent">
+  <div class="bugComponent m-5">
     <div class="card">
       <div class="card-top bg-info">
         <router-link :to="`/BugDetailsPage/${bugProp.id}`">
@@ -9,7 +9,12 @@
         </router-link>
       </div>
       <div class="card-body">
-        {{ bugProp.description }}
+        <p class="m-2">
+          {{ bugProp.description }}
+        </p>
+        <p class="text-info">
+          {{ bugProp.createdAt }}
+        </p>
       </div>
       <div class="card-footer bg-dark text-light">
         {{ bugProp.creator.name }}
