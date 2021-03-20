@@ -9,13 +9,9 @@ import { BadRequest } from '../utils/Errors'
 //   return note
 // }
 class NotesService {
-  async findNotesByBugId(query) {
-    return await dbContext.Note.find(query)
-  }
-
-  async find(query = {}) {
-    const board = await dbContext.Note.find(query).populate('creator')
-    return board
+  async getAllNotes(query = {}) {
+    const note = await dbContext.Note.find(query).populate('creator')
+    return note
   }
 
   async findById(id) {
@@ -36,6 +32,10 @@ class NotesService {
 
   async delete(id) {
     return await dbContext.Note.findByIdAndDelete(id).populate('creator')
+  }
+
+  async getAll(query = {}) {
+    return await dbContext.Note.find(query)
   }
 }
 

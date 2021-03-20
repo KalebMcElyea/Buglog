@@ -17,7 +17,7 @@ export class NotesController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      return res.send(await notesService.find())
+      return res.send(await notesService.getAllNotes())
     } catch (error) {
       next(error)
     }

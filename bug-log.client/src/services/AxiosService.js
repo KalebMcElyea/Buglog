@@ -1,9 +1,10 @@
 import Axios from 'axios'
 
-export const baseURL = window.location.origin.includes('localhost') ? 'http://localhost:3000' : ''
+const base = window.location.host.includes('localhost') ? '//localhost:3000/' : '/'
 export const api = Axios.create({
-  baseURL,
-  timeout: 8000
+  baseURL: base,
+  timeout: 8000,
+  withCredentials: true
 })
 
 export const setBearer = function(bearer) {

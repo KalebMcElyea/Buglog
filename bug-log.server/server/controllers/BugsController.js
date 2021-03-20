@@ -7,10 +7,10 @@ export class BugsController extends BaseController {
   constructor() {
     super('api/bugs')
     this.router
+      .get('', this.getAll)
+      .get('/:id/notes', this.getAllNotes)
     // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .use(Auth0Provider.getAuthorizedUserInfo)
-      .get('/:id/notes', this.getNotesByBugId)
-      .get('', this.getAll)
       .get('/:id', this.getBugsById)
       .post('', this.create)
       .delete('/:id', this.delete)
@@ -66,12 +66,11 @@ export class BugsController extends BaseController {
     }
   }
 
-  async getNotesByBugId(req, res, next) {
+  async getAllNotes(req, res, next) {
     try {
-      res.send(await notesService.findNotesByBugId({ bugId: req.params.id }))
+      res.send(await notesService.getAllNotes({ bug: req.params.id }))
     } catch (error) {
       next(error)
     }
-    throw new Error('Method not implemented.')
   }
 }
