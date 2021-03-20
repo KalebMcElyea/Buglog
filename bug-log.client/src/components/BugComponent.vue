@@ -1,7 +1,16 @@
 <template>
-  <div class="bugComponent card">
-    {{ bugProp.title }}
-    {{ bugProp.description }}
+  <div class="bugComponent">
+    <div class="card">
+      <div class="card-top bg-info">
+        {{ bugProp.title }}
+      </div>
+      <div class="card-body">
+        {{ bugProp.description }}
+      </div>
+      <div class="card-footer bg-dark text-light">
+        {{ bugProp.creator.name }}
+      </div>
+    </div>
   </div>
 </template>
 

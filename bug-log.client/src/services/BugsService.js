@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { AppState } from '../AppState'
 import { api } from './AxiosService'
 
