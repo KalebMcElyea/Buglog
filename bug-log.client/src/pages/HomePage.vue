@@ -1,6 +1,6 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div>
+  <div class="home container-fluid">
+    <div class="row justify-content-center">
       <BugComponent v-for="bug in state.bugs" :key="bug.id" :bug-prop="bug" />
     </div>
   </div>
