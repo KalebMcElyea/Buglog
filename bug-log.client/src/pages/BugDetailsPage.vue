@@ -9,8 +9,8 @@
           <div class="p-4 card-body">
             {{ state.activeBug.description }}
           </div>
-          <div class="car-footer bg-info p-3">
-            <!-- {{ state.activeBug.creator.email }} -->
+          <div class="card-footer bg-info p-3">
+            {{ state.activeBug.creator.email }}
           </div>
         <!-- {{ state.activeBug }} -->
         </div>
@@ -18,12 +18,12 @@
       <div class="col-6">
         <div class="card">
           <div class="card-body">
-            <div class="bg-dark text-danger" v-if="state.activeBug.closed == true">
+            <div class="bg-dark text-danger" v-if="state.activeBug.closed == true" @click="deleteBug">
               <h2>
                 {{ state.activeBug.closed ? 'Closed' : 'Open' }}
               </h2>
             </div>
-            <div class="bg-dark text-success" v-if="state.activeBug.closed ==false">
+            <div class="bg-dark text-success" v-if="state.activeBug.closed ==false" @click="deleteBug">
               <h2>
                 {{ state.activeBug.closed ? 'Closed' : 'Open' }}
               </h2>
@@ -63,6 +63,7 @@ export default {
   setup() {
     const route = useRoute()
     const state = reactive({
+      account: computed(() => AppState.account),
       activeBug: computed(() => AppState.activeBug),
       notes: computed(() => AppState.notes),
       newNote: { bug: route.params.id }
@@ -81,6 +82,15 @@ export default {
         try {
           await notesService.createNote(state.newNote)
           state.newNote = { bug: route.params.id }
+        } catch (error) {
+          logger.log(error)
+        }
+      },
+      async deleteBug() {
+        try {
+          if (window.confirm('Are you sure?')) {
+            await bugsService.deleteBug(route.params.id)
+          }
         } catch (error) {
           logger.log(error)
         }
