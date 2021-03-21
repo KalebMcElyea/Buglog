@@ -15,6 +15,12 @@
         <p class="text-info">
           {{ bugProp.createdAt }}
         </p>
+        <p class="text-success" v-if="bugProp.closed == false">
+          {{ bugProp.closed ? 'Closed' : 'Open' }}
+        </p>
+        <p class="text-danger" v-if="bugProp.closed == true">
+          {{ bugProp.closed ? 'Closed' : 'Open' }}
+        </p>
       </div>
       <div class="card-footer bg-dark text-light">
         {{ bugProp.creator.name }}

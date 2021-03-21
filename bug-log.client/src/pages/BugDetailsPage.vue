@@ -9,21 +9,21 @@
           <div class="p-4 card-body">
             {{ state.activeBug.description }}
           </div>
-          <div class="card-footer bg-info p-3">
+          <!-- <div class="card-footer bg-info p-3">
             {{ state.activeBug.creator.email }}
-          </div>
+          </div> -->
         <!-- {{ state.activeBug }} -->
         </div>
       </div>
       <div class="col-6">
         <div class="card">
           <div class="card-body">
-            <div class="bg-dark text-danger" v-if="state.activeBug.closed == true" @click="deleteBug">
+            <div class="bg-dark  text-danger" v-if="state.activeBug.closed == true" @click="deleteBug">
               <h2>
                 {{ state.activeBug.closed ? 'Closed' : 'Open' }}
               </h2>
             </div>
-            <div class="bg-dark text-success" v-if="state.activeBug.closed ==false" @click="deleteBug">
+            <div class="bg-dark  text-success" v-if="state.activeBug.closed ==false" @click="deleteBug">
               <h2>
                 {{ state.activeBug.closed ? 'Closed' : 'Open' }}
               </h2>
@@ -102,5 +102,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.close:hover{
+  cursor: pointer;
+}
 </style>
