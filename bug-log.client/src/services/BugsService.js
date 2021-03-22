@@ -36,21 +36,12 @@ class BugsService {
     return res.data.id
   }
 
-  // WANT TO TURN THIS INTO A CLOSED INSTEAD OF DELETE
-  // async deleteBoard(id) {
-  //   try {
-  //     await api.delete('api/boards/' + id)
-  //     this.getAllBoards()
-  //   } catch (error) {
-  //     console.error(error)
-  //   }
-  // }
-
   async editBug(id, body) {
     try {
       const res = await api.put('api/bugs/' + id, body)
       console.log(res)
       AppState.activeBug = res.data
+      this.getBugsById(id)
     } catch (error) {
       console.error(error)
     }

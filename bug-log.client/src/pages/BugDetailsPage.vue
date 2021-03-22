@@ -1,18 +1,29 @@
 <template>
-  <div class="BugDetailsPage container-fluid text-center">
+  <div class="BugDetailsPage container-fluid text-center" v-if="state.activeBug.creator">
     <div class="row mt-3 justify-content-center">
       <div class="col-4">
         <div class="card">
+          <form type="submit" @submit.prevent="editBug()" class="m-1" v-if="state.activeBug.closed == false">
+            <input type="text"
+                   class="form-control"
+                   id="description"
+                   v-model="state.editedBug.description"
+                   placeholder="Edit description"
+                   required
+            >
+            <button type="submit" class="btn btn-outline-info mt-2">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+          </form>
           <div class="p-3 card-top bg-dark text-light">
             {{ state.activeBug.title }}
           </div>
           <div class="p-4 card-body">
             {{ state.activeBug.description }}
           </div>
-          <!-- <div class="card-footer bg-info p-3">
+          <div class="card-footer bg-info p-3">
             {{ state.activeBug.creator.email }}
-          </div> -->
-        <!-- {{ state.activeBug }} -->
+          </div>
         </div>
       </div>
       <div class="col-6">
@@ -40,7 +51,7 @@
                  v-model="state.newNote.body"
                  placeholder="Add note to bug..."
           />
-          <button type="submit" class="btn btn-info">
+          <button type="submit" class="btn btn-info m-1">
             Submit
           </button>
         </div>
@@ -63,8 +74,10 @@ export default {
   setup() {
     const route = useRoute()
     const state = reactive({
+      loading: true,
       account: computed(() => AppState.account),
       activeBug: computed(() => AppState.activeBug),
+      editedBug: {},
       notes: computed(() => AppState.notes),
       newNote: { bug: route.params.id }
     })
@@ -72,6 +85,7 @@ export default {
       try {
         await bugsService.getBugsById(route.params.id)
         await notesService.getNotes(route.params.id)
+        state.loading = false
       } catch (error) {
         logger.log(error)
       }
@@ -91,6 +105,13 @@ export default {
           if (window.confirm('Are you sure?')) {
             await bugsService.deleteBug(route.params.id)
           }
+        } catch (error) {
+          logger.log(error)
+        }
+      },
+      async editBug() {
+        try {
+          await bugsService.editBug(state.activeBug.id, state.editedBug)
         } catch (error) {
           logger.log(error)
         }

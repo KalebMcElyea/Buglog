@@ -14,7 +14,7 @@
           {{ bugProp.description }}
         </p>
         <p class="text-info">
-          {{ bugProp.createdAt }}
+          Updated: {{ bugProp.updatedAt.slice(5,7) }} /{{ bugProp.createdAt.slice(8,10) }}/ {{ bugProp.createdAt.slice(0,4) }}
         </p>
         <p class="text-success" v-if="bugProp.closed == false">
           {{ bugProp.closed ? 'Closed' : 'Open' }}
