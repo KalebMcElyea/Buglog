@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <h5 class="bug">
+        <h5 class="bug text-info">
           <i class="fa fa-bug fa-lg" aria-hidden="true"></i>
           Bug Log
         </h5>
@@ -25,11 +25,6 @@
           <router-link :to="{ name: 'Home' }" class="nav-link text-light text-muted">
           </router-link>
         </li>
-        <!-- <li class="nav-item">
-          <router-link :to="{ name: 'About' }" class="nav-link">
-            About
-          </router-link>
-        </li> -->
       </ul>
       <span class="navbar-text">
         <button

@@ -43,6 +43,8 @@ export default {
     const router = useRouter()
     const state = reactive({
       bugs: computed(() => AppState.bugs),
+      bugsClosed: computed(() => AppState.bugs.filter(bugs => bugs.closed === true)),
+      bugsOpen: computed(() => AppState.bugs.filter(bugs => bugs.closed === false)),
       newBug: {}
     })
     onMounted(async() => {

@@ -1,9 +1,16 @@
 <template>
-  <div class="BugDetailsPage container-fluid text-center" v-if="state.activeBug.creator">
+  <div class="BugDetailsPage container-fluid text-center font" v-if="state.activeBug.creator">
     <div class="row mt-3 justify-content-center">
       <div class="col-4">
         <div class="card shadow-lg">
           <form type="submit" @submit.prevent="editBug()" class="m-1" v-if="state.activeBug.closed == false">
+            <input type="text"
+                   class="form-control"
+                   id="title"
+                   v-model="state.editedBug.title"
+                   placeholder="Edit title"
+                   required
+            >
             <input type="text"
                    class="form-control"
                    id="description"
@@ -31,13 +38,13 @@
       <div class="col-6">
         <div class="card">
           <div class="card-body">
-            <div class="bg-dark  text-danger" v-if="state.activeBug.closed == true" @click="deleteBug">
-              <h2>
+            <div class="bg-dark text-danger pt-2" v-if="state.activeBug.closed == true" @click="deleteBug">
+              <h2 class="">
                 {{ state.activeBug.closed ? 'Closed' : 'Open' }}
               </h2>
             </div>
-            <div class="bg-dark  text-success" v-if="state.activeBug.closed ==false" @click="deleteBug">
-              <h2>
+            <div class="bg-dark text-success pt-2" v-if="state.activeBug.closed ==false" @click="deleteBug">
+              <h2 class="">
                 {{ state.activeBug.closed ? 'Closed' : 'Open' }}
               </h2>
             </div>
@@ -104,7 +111,7 @@ export default {
       },
       async deleteBug() {
         try {
-          if (window.confirm('Are you sure?')) {
+          if (window.confirm('Are you sure you want to close this BUG?')) {
             await bugsService.deleteBug(route.params.id)
           }
         } catch (error) {
@@ -125,12 +132,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.close:hover{
-  cursor: pointer;
-}
+// .close:hover{
+//   cursor: pointer;
+//   width: 550px;
+//   height:max
+// }
 
 .pic{
   height: 50px;
   width: 50px;
+}
+.font{
+  font-family:'Special Elite', cursive;
+  font-size: 25px;
 }
 </style>
