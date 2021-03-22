@@ -4,14 +4,14 @@
       <form type="submit" @submit.prevent="create">
         <div class="form-group m-2">
           <input type="text"
-                 class="form-control"
+                 class="form-control m-1"
                  id="title"
                  v-model="state.newBug.title"
                  placeholder="What's the Bug..."
                  required
           >
           <input type="text"
-                 class="form-control"
+                 class="form-control  m-1"
                  id="description"
                  v-model="state.newBug.description"
                  placeholder="Description..."

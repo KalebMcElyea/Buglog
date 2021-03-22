@@ -2,7 +2,9 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <h5>Bug Log</h5>
+        <h5 class="text-info">
+          <i class="fa fa-bug fa-lg" aria-hidden="true"></i> Bug Log
+        </h5>
       </div>
     </router-link>
     <button
@@ -19,8 +21,7 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <router-link :to="{ name: 'Home' }" class="nav-link">
-            BUGS
+          <router-link :to="{ name: 'Home' }" class="nav-link text-light text-muted">
           </router-link>
         </li>
         <!-- <li class="nav-item">

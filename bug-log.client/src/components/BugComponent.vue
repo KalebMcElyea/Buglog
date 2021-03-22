@@ -9,12 +9,18 @@
           </h3>
         </router-link>
       </div>
-      <div class="card-body">
+      <div class="card-body shadow-lg">
         <p class="m-2">
           {{ bugProp.description }}
         </p>
+        <hr>
         <p class="text-info">
-          Updated: {{ bugProp.updatedAt.slice(5,7) }} /{{ bugProp.createdAt.slice(8,10) }}/ {{ bugProp.createdAt.slice(0,4) }}
+          Created: {{ bugProp.updatedAt.slice(5,7) }} /{{ bugProp.createdAt.slice(8,10) }}/ {{ bugProp.createdAt.slice(0,4) }}
+          <br>
+        </p>
+        <hr>
+        <p>
+          Updated: {{ bugProp.updatedAt.slice(5,7) }} /{{ bugProp.updatedAt.slice(8,10) }}/ {{ bugProp.updatedAt.slice(0,4) }}
         </p>
         <p class="text-success" v-if="bugProp.closed == false">
           {{ bugProp.closed ? 'Closed' : 'Open' }}
@@ -22,8 +28,10 @@
         <p class="text-danger" v-if="bugProp.closed == true">
           {{ bugProp.closed ? 'Closed' : 'Open' }}
         </p>
+        <hr>
       </div>
       <div class="card-footer bg-dark text-light">
+        <img class="pic p-2" :src="bugProp.creator.picture" alt="">
         {{ bugProp.creator.name }}
       </div>
     </div>
@@ -55,6 +63,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-
+<style>
+.pic{
+  height: 40px;
+  width: 40px;
+}
 </style>

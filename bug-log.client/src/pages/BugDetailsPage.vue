@@ -2,7 +2,7 @@
   <div class="BugDetailsPage container-fluid text-center" v-if="state.activeBug.creator">
     <div class="row mt-3 justify-content-center">
       <div class="col-4">
-        <div class="card">
+        <div class="card shadow-lg">
           <form type="submit" @submit.prevent="editBug()" class="m-1" v-if="state.activeBug.closed == false">
             <input type="text"
                    class="form-control"
@@ -16,7 +16,7 @@
             </button>
           </form>
           <div class="p-3 card-top bg-dark text-light">
-            {{ state.activeBug.title }}
+            <img class="pic p-2" :src="state.activeBug.creator.picture" alt=""> {{ state.activeBug.title }}
           </div>
           <div class="p-4 card-body">
             {{ state.activeBug.description }}
@@ -125,5 +125,10 @@ export default {
 <style lang="scss" scoped>
 .close:hover{
   cursor: pointer;
+}
+
+.pic{
+  height: 50px;
+  width: 50px;
 }
 </style>
