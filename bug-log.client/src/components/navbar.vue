@@ -2,8 +2,9 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <h5 class="text-info">
-          <i class="fa fa-bug fa-lg" aria-hidden="true"></i> Bug Log
+        <h5 class="bug">
+          <i class="fa fa-bug fa-lg" aria-hidden="true"></i>
+          Bug Log
         </h5>
       </div>
     </router-link>
@@ -119,6 +120,14 @@ a:hover {
   text-transform: uppercase;
 }
 .nav-item .nav-link.router-link-exact-active{
-  color: var(--primary);
+  color: rgb(233, 85, 134)
 }
+.bug{
+  font-family: 'Syne Mono';
+}
+
+.bug :hover{
+  cursor: pointer;
+}
+
 </style>

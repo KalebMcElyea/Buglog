@@ -18,9 +18,11 @@
           <div class="p-3 card-top bg-dark text-light">
             <img class="pic p-2" :src="state.activeBug.creator.picture" alt=""> {{ state.activeBug.title }}
           </div>
+          <hr>
           <div class="p-4 card-body">
             {{ state.activeBug.description }}
           </div>
+          <hr>
           <div class="card-footer bg-info p-3">
             {{ state.activeBug.creator.email }}
           </div>

@@ -44,7 +44,7 @@ export default {
       state,
       async removeNote() {
         try {
-          if (window.confirm('Are you sure?')) {
+          if (window.confirm('Delete this note?')) {
             await notesService.deleteNote(props.noteProp.id)
           }
         } catch (error) {
