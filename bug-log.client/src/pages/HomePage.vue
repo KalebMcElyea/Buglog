@@ -2,7 +2,7 @@
   <div class="home container-fluid ">
     <div class="row mt-3 justify-content-center">
       <form type="submit" @submit.prevent="create">
-        <div class="form-group">
+        <div class="form-group m-2">
           <input type="text"
                  class="form-control"
                  id="title"
@@ -17,7 +17,7 @@
                  placeholder="Description..."
                  required
           >
-          <button type="submit" class="btn btn-outline-info">
+          <button type="submit" class="btn btn-outline-info mt-2">
             Create Bug
           </button>
         </div>

@@ -1,9 +1,10 @@
 <template>
+  <!-- ADD INTO EDITS v-if="bugProp.account.id == bugProp.user.id" -->
   <div class="bugComponent m-5">
     <div class="card">
       <div class="card-top bg-info">
         <router-link :to="`/BugDetailsPage/${bugProp.id}`">
-          <h3>
+          <h3 class="text-dark">
             {{ bugProp.title }}
           </h3>
         </router-link>
